@@ -18,7 +18,7 @@ namespace XamarinListView.ViewModels
 
         #region Attributes
 
-        private ObservableCollection<Paises> paises;
+        private ObservableCollection<Paises> pais;
         private bool isRefreshing;
         #endregion
 
@@ -26,8 +26,8 @@ namespace XamarinListView.ViewModels
         #region Properties
         public ObservableCollection<Paises> Paises
         {
-            get { return this.paises; }
-            set { SetValue(ref this.paises, value); }
+            get { return this.pais; }
+            set { SetValue(ref this.pais, value); }
         }
 
         public bool IsRefreshing
@@ -67,8 +67,8 @@ namespace XamarinListView.ViewModels
 
             var response = await this.apiService.GetList<Paises>(
                 "https://restcountries.eu/",
-                "/rest/v2",
-                "/all");
+                "/rest",
+                "/v2/all");
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;

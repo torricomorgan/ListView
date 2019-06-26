@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinListView.ViewModels;
+using XamarinListView.Views;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamarinListView
@@ -10,8 +12,10 @@ namespace XamarinListView
         public App()
         {
             InitializeComponent();
-
             MainPage = new MainPage();
+            var mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Paises = new PaisesViewModel();
+            this.MainPage = new NavigationPage(new PaisesPage());
         }
 
         protected override void OnStart()
